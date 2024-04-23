@@ -14,30 +14,6 @@ public class ModifiedAStar {
         return neighbours;
     }
 
-    // private static Cell slip(Cell cell, Cell[][] grid, int[] direction, Cell end)
-    // {
-    // int x = cell.getX() + direction[0];
-    // int y = cell.getY() + direction[1];
-    // while (x >= 0 && x < grid[0].length && y >= 0 && y < grid[0].length &&
-    // !grid[x][y].getIsObstacle()) {
-    // if (x + direction[0] < 0 || x + direction[0] >= grid.length || y +
-    // direction[1] < 0
-    // || y + direction[1] >= grid[0].length || (grid[x + direction[0]][y +
-    // direction[1]] != null && grid[x + direction[0]][y +
-    // direction[1]].getIsObstacle()) ||
-    // grid[x+direction[0]][y+direction[1]].equals(end)) {
-
-    // return grid[x][y]; // cell where sliding stops
-    // }
-
-    // int newX = x + direction[0];
-    // int newY = y + direction[1];
-    // x = newX;
-    // y = newY;
-    // }
-    // return null; // sliding goes out of bounds
-    // }
-
     private static Cell slip(Cell cell, Cell[][] grid, int[] direction, Cell end) {
         int x = cell.getX() + direction[0];
         int y = cell.getY() + direction[1];
@@ -127,9 +103,6 @@ public class ModifiedAStar {
             if (current == null) {
                 break;
             }
-            // System.out.println((current.getX() + 1) + " " + (current.getY() + 1));
-
-            // openSet.remove(current);
 
             if (current.equals(end)) {
                 return reconstructPath(current);
@@ -156,6 +129,6 @@ public class ModifiedAStar {
             }
         }
 
-        return Collections.emptyList(); // No path found
+        return Collections.emptyList();
     }
 }

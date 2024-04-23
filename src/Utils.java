@@ -22,7 +22,6 @@ public class Utils {
             for (height = 0; (line = bufferedReader.readLine()) != null; height++) {
                 if (line.isEmpty())
                     break;
-                // System.out.println("Line " + height + ": " + line);
                 lines.add(line);
             }
             width = lines.get(0).length();
@@ -45,7 +44,6 @@ public class Utils {
                     }
 
                 }
-
 
             }
         } catch (FileNotFoundException e) {
