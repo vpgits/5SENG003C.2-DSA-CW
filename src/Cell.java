@@ -1,8 +1,8 @@
 public class Cell {
     private int x; // x-position of the cell
     private int y; // y-position of the cell
-    private int cost; //cost from the starting cell to the current cell
-    private int heuristic; // heuristic cost from the cell to the goal
+    private double cost; // cost from the starting cell to the current cell
+    private double heuristic; // heuristic cost from the cell to the goal
     private boolean isObstacle; // check if the cell is an obstacle
     private Cell parent; // parent of the current cell
 
@@ -14,9 +14,9 @@ public class Cell {
         this.heuristic = 0;
         this.parent = null;
 
-
     }
-    public Cell(int x, int y, boolean isObstacle){
+
+    public Cell(int x, int y, boolean isObstacle) {
         this.x = x;
         this.y = y;
         this.isObstacle = isObstacle;
@@ -28,9 +28,10 @@ public class Cell {
 
     /**
      * Get the total cost of the current cell
+     * 
      * @return the total cost of the current cell
      */
-    public int getTotalCost() {
+    public double getTotalCost() {
         return cost + heuristic;
     }
 
@@ -50,19 +51,19 @@ public class Cell {
         this.y = y;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
 
-    public int getHeuristic() {
+    public double getHeuristic() {
         return heuristic;
     }
 
-    public void setHeuristic(int heuristic) {
+    public void setHeuristic(double heuristic) {
         this.heuristic = heuristic;
     }
 
@@ -77,6 +78,7 @@ public class Cell {
     public boolean getIsObstacle() {
         return isObstacle;
     }
+
     public void setIsObstacle(boolean isObstacle) {
         this.isObstacle = isObstacle;
     }

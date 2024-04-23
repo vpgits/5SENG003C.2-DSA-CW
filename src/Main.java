@@ -10,7 +10,7 @@ public class Main {
 
         if (!path.isEmpty()) {
             // displayGrid(grid, path);
-            System.out.println("Path: " + ModifiedAStar.printPath(path));
+            // System.out.println("Path: " + ModifiedAStar.printPath(path));
             System.out.println("length: " + path.size());
             System.out.println("\nTime taken: " + (endTime - startTime) + "ms\n");
         } else {

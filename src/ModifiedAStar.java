@@ -1,4 +1,9 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class ModifiedAStar {
     private static final int[][] directions = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
@@ -44,8 +49,12 @@ public class ModifiedAStar {
     // return Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY());
     // }
 
-    private static int cost(Cell a, Cell b) {
-        return Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY());
+    private static double cost(Cell a, Cell b) {
+        return Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY()) + b.getHeuristic();
+    }
+
+    private static double heuristic(Cell a, Cell b) {
+        return Math.sqrt(Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2));
     }
 
     private static List<Cell> reconstructPath(Cell current) {
@@ -94,7 +103,7 @@ public class ModifiedAStar {
     public static List<Cell> findPath(Cell[][] grid, Cell start, Cell end) {
 
         Queue<Cell> openSet = new PriorityQueue<>(
-                Comparator.comparingInt(cell -> cell.getCost() + cell.getHeuristic()));
+                Comparator.comparingDouble(cell -> cell.getCost() + cell.getHeuristic()));
         boolean[][] closedSet = new boolean[grid.length][grid[0].length];
         openSet.add(start);
 
@@ -118,15 +127,15 @@ public class ModifiedAStar {
                     continue;
                 }
 
-                int newCost = current.getCost() + cost(current, neighbour);
+                double newCost = current.getCost() + cost(current, neighbour);
                 if (newCost < neighbour.getCost() || !openSet.contains(neighbour)) {
                     neighbour.setCost(newCost);
-                    // neighbour.setHeuristic(heuristic(neighbour, end));
-                    neighbour.setHeuristic(newCost);
+                    neighbour.setHeuristic(heuristic(neighbour, end));
                     neighbour.setParent(current);
                     openSet.add(neighbour);
                 }
             }
+
         }
 
         return Collections.emptyList();

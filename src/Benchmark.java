@@ -9,7 +9,7 @@ public class Benchmark {
 
     public static void main(String[] args) {
         Random random = new Random();
-        int numberOfTimes = 100;
+        int numberOfTimes = 200;
         long[][] executionTimes = new long[benchmarkFileNameStrings.length][numberOfTimes];
         int[] executionCounts = new int[benchmarkFileNameStrings.length];
         boolean[] isBenchmarkSuccessful = new boolean[benchmarkFileNameStrings.length];
