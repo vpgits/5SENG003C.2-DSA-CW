@@ -13,6 +13,8 @@ public class Cell {
         this.cost = Integer.MAX_VALUE;
         this.heuristic = 0;
         this.parent = null;
+
+
     }
     public Cell(int x, int y, boolean isObstacle){
         this.x = x;
@@ -21,6 +23,7 @@ public class Cell {
         this.heuristic = 0;
         this.cost = Integer.MAX_VALUE;
         this.parent = null;
+
     }
 
     /**
